@@ -96,8 +96,8 @@ if((!empty($_POST["regusername"])) and (!empty($_POST["regpassword"])))
 {
 $query="SELECT * FROM user WHERE username='".$regusername."' AND password='".$regpassword."'";
 $result=mysqli_query($dbconn,$query);
-$count=mysqli_num_rows($result);
-if($count>=1)
+$row=mysql_fetch_assoc($result);
+if($row["password"]== "$regpassword")
 {
 header("location:homepage.php");
 }
